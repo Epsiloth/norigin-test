@@ -7,8 +7,13 @@
     "url": "git+https://github.com/NoriginMedia/candidate-tester.git"
   },
   "scripts": {
-    "start:mock-api": "./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
-    "start": "node ./node_modules/nm-mock-api/scripts/updateEpg.js && npm run start:mock-api"
+    "start-api:mock-api": "bash ./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
+    "start-api:update-api": "node ./node_modules/nm-mock-api/scripts/updateEpg.js",
+    "start-api": "npm run start-api:update-api && npm run start-api:mock-api",
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint"
   },
   "author": "Dylan Thomson",
   "license": "MIT",
@@ -17,6 +22,16 @@
   },
   "homepage": "https://github.com/NoriginMedia/candidate-tester#readme",
   "dependencies": {
-    "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry"
+    "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.3.3",
+    "axios": "^1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "@eslint/eslintrc": "^3",
+    "sass": "^1.85.1"
   }
 }

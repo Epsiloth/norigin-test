@@ -1,0 +1,29 @@
+.channel_element {
+height: $epg_row_height;
+
+background-color: $primary-color;
+position: relative;
+
+    .focus_overlay {
+        width: $app_width;
+        height: $epg_row_height;
+        position: absolute;
+        top:0;
+        left:0;
+
+        &:hover {
+            box-shadow: inset 0px 0px 0px 1px yellow;
+        }
+    }
+
+    &.focus {
+        .focus_overlay {
+            box-shadow: inset 0px 0px 0px 1px yellow;
+        }
+    }
+
+    .channel_image {
+        width: 100%;
+        height: 100%;
+    }
+}

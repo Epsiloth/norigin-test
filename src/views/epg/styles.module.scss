@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    background-color: $secondary-color;
+
+    .movable_wrapper {
+        position: relative;
+        .channel_row {
+        width: 150px;
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.4);
+    }
+    }
+    
+}
