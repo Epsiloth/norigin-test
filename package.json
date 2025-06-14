@@ -14,6 +14,13 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint"
+    "start-api:mock-api": "bash ./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
+    "start-api:update-api": "node ./node_modules/nm-mock-api/scripts/updateEpg.js",
+    "start-api": "npm run start-api:update-api && npm run start-api:mock-api",
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint"
   },
   "author": "Dylan Thomson",
   "license": "MIT",
