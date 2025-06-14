@@ -1,13 +1,19 @@
 $app_width: 1920px;
-$app_height: 1080px;
+$app_height: 720px;
 
 $epg_row_height: 100px;
 
 $primary_color: #1c1c1c;
 $secondary_color: #8c8c8c;
 
+$timeslot_distance: 500px;
+
+$button_size: 80px;
+
 :export {
     app_width: $app_width;
     app_height: $app_height;
     epg_row_height: $epg_row_height;
+    timeslot_distance: $timeslot_distance;
+    button_size: $button_size;
 }

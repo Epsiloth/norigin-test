@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import styles from './styles.module.scss';
 
 export const metadata = {
   title: "EPG",
@@ -8,8 +8,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body style={{backgroundColor: 'black', color: 'white'}}>
+        <div className={styles.app_wrapper}>
+          {children}
+        </div>
       </body>
     </html>
   );

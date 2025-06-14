@@ -11,6 +11,11 @@ position: relative;
         top:0;
         left:0;
 
+        z-index: 0;
+
+        
+        transition: all 250ms;
+
         &:hover {
             box-shadow: inset 0px 0px 0px 1px yellow;
         }
