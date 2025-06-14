@@ -1,0 +1,105 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/app/styles.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_main__ZYsCT {
+  width: 1920px;
+  height: 720px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/components/epg-row/styles.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_epg_row__aNJYs {
+  width: max-content;
+  height: 100px;
+  background-color: #1c1c1c;
+  position: relative;
+}
+.styles_epg_row__aNJYs .styles_schedule_entry___JTt7 {
+  height: 100%;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.styles_epg_row__aNJYs .styles_schedule_entry___JTt7 .styles_title__lHtXp {
+  margin-left: 10px;
+  margin-top: 16.6666666667px;
+}
+.styles_epg_row__aNJYs .styles_schedule_entry___JTt7 .styles_duration__bCz7m {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/components/channel-column/styles.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_channel_element__6uLDp {
+  height: 100px;
+  background-color: #1c1c1c;
+  position: relative;
+}
+.styles_channel_element__6uLDp .styles_focus_overlay__Xtkdx {
+  width: 1920px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: all 250ms;
+}
+.styles_channel_element__6uLDp .styles_focus_overlay__Xtkdx:hover {
+  box-shadow: inset 0px 0px 0px 1px yellow;
+}
+.styles_channel_element__6uLDp.styles_focus__BILH1 .styles_focus_overlay__Xtkdx {
+  box-shadow: inset 0px 0px 0px 1px yellow;
+}
+.styles_channel_element__6uLDp .styles_channel_image__UMF0p {
+  width: 100%;
+  height: 100%;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/views/epg/styles.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_wrapper__7OAaU {
+  width: 100%;
+  background-color: #1c1c1c;
+}
+.styles_wrapper__7OAaU .styles_header__8IQW3 {
+  width: 100%;
+  height: 50px;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  z-index: 1;
+}
+.styles_wrapper__7OAaU .styles_movable_wrapper__3G4K9 {
+  position: relative;
+  top: 50px;
+  transition: all 250ms;
+}
+.styles_wrapper__7OAaU .styles_movable_wrapper__3G4K9 .styles_channel_row__NMnwD {
+  width: 150px;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: 1;
+  box-shadow: 10px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+.styles_wrapper__7OAaU .styles_movable_wrapper__3G4K9 .styles_channel_row__NMnwD .styles_channel_header__UBXMg {
+  height: 50px;
+  background-color: #1c1c1c;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/components/date-row/styles.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_date_row__7siao {
+  width: max-content;
+  background-color: #1c1c1c;
+  height: 50px;
+}
+.styles_date_row__7siao .styles_timeslot__KMxDa {
+  width: 500px;
+  height: 100%;
+  display: inline-block;
+  line-height: 50px;
+}

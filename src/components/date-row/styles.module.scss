@@ -1,0 +1,12 @@
+.date_row {
+    width: max-content;
+    background-color: $primary-color;
+    height: $epg_row_height/2;
+
+    .timeslot {
+        width: $timeslot_distance;
+        height: 100%;
+        display: inline-block;
+        line-height: $epg_row_height/2;
+    }
+}
