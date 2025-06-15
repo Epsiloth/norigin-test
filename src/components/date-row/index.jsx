@@ -37,7 +37,7 @@ export default function DateRow ({ id, currentTime }) {
     };
     
     return(
-        <div id={id} className={styles.date_row} style={{marginLeft: `${leftOffset}px`}}>
+        <div id={id} className={styles.date_row} style={{marginLeft: `${startingOffset}px`}}>
             {timeslots}
         </div>
     )

@@ -7,6 +7,7 @@ import EPGRow from '@/components/epg-row';
 import ChannelLogo from '@/components/channel-column';
 import styles from './styles.module.scss';
 import DateRow from '@/components/date-row';
+import { formatDate } from '@/helpers/helpers';
 
 export default function EPGView() {
   // STATE & VARIABLE DECLARATIONS
@@ -18,6 +19,7 @@ export default function EPGView() {
   const [channels, setChannels] = useState([]);
   const [focus, setFocus] = useState(0);
   const [offsetHeight, setOffsetHeight] = useState(defaultOffset);
+  const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => { // ON COMPONENT MOUNT, FETCH DATA FROM THE MOCK API
@@ -33,7 +35,7 @@ export default function EPGView() {
   useEffect(() => {  // RE-RENDER COMPONENTS ON ANY DATA, FOCUS OR TIME UPDATE
     renderChannels();
     renderRows();
-    document.addEventListener('keydown', handleKeyPress); // LISTEN FOR USER INPUT
+    document.addEventListener('keyup', handleKeyPress); // LISTEN FOR USER INPUT
 
     const timeInterval = setInterval(() => {
       setCurrentTime(new Date()) // UPDATE EPG TIME EVERY MINUTE
@@ -41,11 +43,11 @@ export default function EPGView() {
 
     routerUrl = `/player?channel=${data[focus]?.id}`;
     return () => {
-      document.removeEventListener('keydown', handleKeyPress); // REFRESH EVENT LISTENER FOR STATE CHANGES
+      document.removeEventListener('keyup', handleKeyPress); // REFRESH EVENT LISTENER FOR STATE CHANGES
       clearInterval(timeInterval);
     };
 
-  }, [data, focus, currentTime]);
+  }, [data, focus, currentTime, offsetLeft]);
 
   const renderChannels = () => {
     const channels = [];
@@ -69,12 +71,24 @@ export default function EPGView() {
 
   const handleKeyPress = (event) => { // HANDLE USER INPUT
     switch (event.keyCode) {
+      case 37: // ARROW LEFT
+          event.stopPropagation();
+          event.preventDefault();
+          goLeft();
+      break;
+
       case 38: // ARROW UP
         event.stopPropagation();
         event.preventDefault();
         goUp();
       break;
-      
+
+      case 39: // ARROW RIGHT
+        event.stopPropagation();
+        event.preventDefault();
+        goRight();
+      break;
+            
       case 40: // ARROW DOWN
         event.stopPropagation();
         event.preventDefault();
@@ -89,6 +103,16 @@ export default function EPGView() {
     }
   }
 
+  const goRight = () => {
+    const timeslotDist = parseInt(styles.timeslot_distance);
+    const maxLeftLimit = 20 * timeslotDist;
+
+    if (Math.abs(offsetLeft) + timeslotDist >= maxLeftLimit)
+      setOffsetLeft(-maxLeftLimit)
+    else
+    setOffsetLeft(offsetLeft - timeslotDist)
+  }
+
   const goUp = () => {
     if (focus > 0) {
       const nextElementRect = document.getElementById(`channel-${focus - 1}`).getBoundingClientRect();
@@ -100,6 +124,15 @@ export default function EPGView() {
         focus - 1 > 0 ? setOffsetHeight(offsetHeight + rowHeight) : setOffsetHeight(defaultOffset);
       }
     };
+  }
+
+  const goLeft = () => {
+    const timeslotDist = parseInt(styles.timeslot_distance);
+
+    if (Math.abs(offsetLeft) - timeslotDist <= 0)
+      setOffsetLeft(0);
+    else
+      setOffsetLeft(offsetLeft + timeslotDist);
   }
 
   const goDown = () => {
@@ -123,15 +156,17 @@ export default function EPGView() {
 
   return (
       <div className={styles.wrapper}>
-        <div className={styles.header}>
+        <div className={styles.header} style={{left: `${offsetLeft}px`}}>
           <DateRow id='date-row' currentTime={currentTime} />
         </div>
         <div className={styles.movable_wrapper} style={{top: `${offsetHeight}px`}}>
           <div className={styles.channel_row}>
-            <div className={styles.channel_header} />
+            <div className={styles.channel_header}>{formatDate(currentTime)}</div>
             {channels}
           </div>
-          {rows}
+          <div className={styles.row_wrapper} style={{left: `${offsetLeft}px`}}>
+            {rows}
+          </div>
         </div>
       </div>
   );

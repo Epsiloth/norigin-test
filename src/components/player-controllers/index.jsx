@@ -20,12 +20,10 @@ export default function PlayerController ({ playerRef, channelData }) {
     }, [])
 
     useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress);
-        document.addEventListener('onmousemove', resetTimer);
+        document.addEventListener('keyup', handleKeyPress);
 
         return () => {
-            document.removeEventListener('keydown', handleKeyPress);
-            document.removeEventListener('onmousemove', resetTimer);
+            document.removeEventListener('keyup', handleKeyPress);
         }
     }, [focus])
 
@@ -94,7 +92,6 @@ export default function PlayerController ({ playerRef, channelData }) {
         setShow(show);
         clearTimeout(showTimeout.current);
         showTimeout.current = setTimeout(() => {
-            console.log('timer');
             setShow(false);
         }, 3000);
     }

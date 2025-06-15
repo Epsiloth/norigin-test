@@ -9,6 +9,8 @@
         position: absolute;
 
         z-index: 1;
+
+        transition: all 250ms;
     }
 
     .movable_wrapper {
@@ -17,6 +19,7 @@
         top: $epg_row_height/2;
 
         transition: all 250ms;
+        
         .channel_row {
             width: toRem(150);
             
@@ -30,7 +33,16 @@
             .channel_header {
                 height: $epg_row_height/2;
                 background-color: $primary-color;
+
+                line-height: $epg_row_height/2;
+                padding-left: .3rem;
             }
+        }
+
+        .row_wrapper {
+            position: absolute;
+
+            transition: all 250ms;
         }
     }
     

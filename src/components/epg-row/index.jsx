@@ -48,7 +48,7 @@ export default function EPGRow ({ id, dataProps, currentTime }) {
     };
     
     return(
-        <div id={`row-${id}`} className={styles.epg_row} style={{marginLeft: `${leftOffset}px`}}>
+        <div id={`row-${id}`} className={styles.epg_row} style={{marginLeft: `${startingOffset}px`}}>
             {schedules}
         </div>
     )

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body style={{backgroundColor: 'black', color: 'white'}}>
         <div className={styles.app_wrapper}>
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
         </div>
       </body>
     </html>
