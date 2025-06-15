@@ -9,7 +9,7 @@
 
             display: inline-block;
 
-            border: 1px solid rgba(255, 255, 255, .2);
+            box-shadow: inset 0px 0px 0px 1px $secondary-color;
 
             .title {
                 margin-left: 1rem;
@@ -19,6 +19,10 @@
             .duration {
                 margin-left: 2rem;
                 margin-top: .2rem;
+            }
+
+            &.current {
+                background-color: $secondary-color;
             }
         }
 }

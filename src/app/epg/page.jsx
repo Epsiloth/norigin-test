@@ -22,6 +22,7 @@ export default function EPGView() {
   const [offsetHeight, setOffsetHeight] = useState(defaultOffset);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
+  let firstMovement = false;
 
   useEffect(() => { // ON COMPONENT MOUNT, FETCH DATA FROM THE MOCK API
     axios.get('http://localhost:1337/epg')
@@ -32,6 +33,10 @@ export default function EPGView() {
       console.error(err);
     });
   }, []);
+
+  useEffect(() => {
+    jumpToCurrent();
+  }, [data])
 
   useEffect(() => {  // RE-RENDER COMPONENTS ON ANY DATA, FOCUS OR TIME UPDATE
     renderChannels();
@@ -101,6 +106,16 @@ export default function EPGView() {
         event.preventDefault();
         onChannelSelect();
       break;
+    }
+  }
+
+  const jumpToCurrent = () => {
+    const indicatorPosition = document.getElementById('time-indicator').getBoundingClientRect();
+    const channelOffset = parseInt(styles.channel_column_width) * 2; // INCREASE THE OFFSET SO THE INDICATOR IS MORE VISIBLE ON THE JUMP
+
+    if (!firstMovement) {
+      setOffsetLeft(channelOffset - indicatorPosition.left);
+      firstMovement = true;
     }
   }
 

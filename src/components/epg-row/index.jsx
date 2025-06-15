@@ -10,18 +10,19 @@ export default function EPGRow ({ id, dataProps, currentTime }) {
     useEffect(() => {
         setData(dataProps);
         renderSchedule();
-    }, [dataProps]);
+    }, [dataProps, currentTime]);
 
     const renderSchedule = () => {
         const array = [];
         for (let i = 0; i < data?.schedules.length; i++) {
             const startDate = new Date(data?.schedules[i].start);
             const endDate = new Date(data?.schedules[i].end);
+            const isCurrent = currentTime.getTime() < endDate.getTime() && currentTime.getTime() > startDate.getTime() ? true : false;
 
-            const scheduleWidth = (Math.abs(endDate - startDate) / (1000 * 60))  * parseInt(styles.timeslot_distance) / 60;
+            const scheduleWidth = ((Math.abs(endDate - startDate) / (1000 * 60))  * parseInt(styles.timeslot_distance)) / 60;
 
             array.push(
-                <div key={`${data?.id}-${i}`} id={`${data?.id}-${i}`} className={styles.schedule_entry} style={{width: `${scheduleWidth}px`}}>
+                <div key={`${data?.id}-${i}`} id={`${data?.id}-${i}`} className={`${styles.schedule_entry}${isCurrent ? ` ${styles.current}` : ''}`} style={{width: `${scheduleWidth}px`}}>
                     <div className={styles.title}>{data?.schedules[i].title}</div>
                     <div className={styles.duration}>{formatToHourFromDate(startDate)} - {formatToHourFromDate(endDate)}</div>
                 </div>
