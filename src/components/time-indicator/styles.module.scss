@@ -1,0 +1,12 @@
+.time_indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    height: $app_height;
+    width: .1rem;
+
+    background-color: yellow;
+}

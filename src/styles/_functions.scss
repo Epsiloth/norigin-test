@@ -1,4 +1,12 @@
+@function stripUnit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
 @function toRem($value) {
-    $remValue: ($value / 16) + rem; 
+    $remValue: (stripUnit($value) / 16) + rem;
     @return $remValue;
 }

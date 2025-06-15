@@ -3,20 +3,14 @@ import styles from './styles.module.scss';
 import { formatToHourFromDate } from "@/helpers/helpers";
 
 export default function EPGRow ({ id, dataProps, currentTime }) {
-    const startingOffset = 150; // CHANNEL COLUMN WIDTH
+    const startingOffset = parseInt(styles.channel_column_width); // CHANNEL COLUMN WIDTH
     const [data, setData] = useState(dataProps);
     const [schedules, setSchedules] = useState([]);
-    const [leftOffset, setLeftOffset] = useState(0);
 
     useEffect(() => {
         setData(dataProps);
         renderSchedule();
-        calcTimeOffset();
     }, [dataProps]);
-
-    useEffect(() => {
-        calcTimeOffset();
-    }, [currentTime]);
 
     const renderSchedule = () => {
         const array = [];
@@ -35,17 +29,6 @@ export default function EPGRow ({ id, dataProps, currentTime }) {
         }
         setSchedules(array);
     }
-
-    const calcTimeOffset = () => {
-        const currentHour = currentTime.getHours();
-        const timeslotOffset = currentHour * parseInt(styles.timeslot_distance);
-        const currentMinutes = currentTime.getMinutes();
-        const additionalMinutesOffset = (currentMinutes * parseInt(styles.timeslot_distance)) / 60;
-
-        const totalOffset = timeslotOffset + additionalMinutesOffset;
-
-        setLeftOffset(startingOffset - totalOffset);
-    };
     
     return(
         <div id={`row-${id}`} className={styles.epg_row} style={{marginLeft: `${startingOffset}px`}}>

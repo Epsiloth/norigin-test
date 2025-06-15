@@ -8,6 +8,7 @@ import ChannelLogo from '@/components/channel-column';
 import styles from './styles.module.scss';
 import DateRow from '@/components/date-row';
 import { formatDate } from '@/helpers/helpers';
+import TimeIndicator from '@/components/time-indicator';
 
 export default function EPGView() {
   // STATE & VARIABLE DECLARATIONS
@@ -38,8 +39,8 @@ export default function EPGView() {
     document.addEventListener('keyup', handleKeyPress); // LISTEN FOR USER INPUT
 
     const timeInterval = setInterval(() => {
-      setCurrentTime(new Date()) // UPDATE EPG TIME EVERY MINUTE
-    }, 60000);
+      setCurrentTime(new Date()) // UPDATE EPG TIME EVERY 5 MINUTES
+    }, 300000);
 
     routerUrl = `/player?channel=${data[focus]?.id}`;
     return () => {
@@ -105,12 +106,16 @@ export default function EPGView() {
 
   const goRight = () => {
     const timeslotDist = parseInt(styles.timeslot_distance);
-    const maxLeftLimit = 20 * timeslotDist;
+    const appWidth = parseInt(styles.app_width);
+    const maxLimit = document.getElementById('date-row').getBoundingClientRect().right - parseInt(styles.channel_column_width); // POSITION OF THE RIGHTMOST SIDE OF THE DATE ROW MINUS THE CHANNEL COLUMN WIDTH
+    const rowWidth = document.getElementById('date-row').getBoundingClientRect().width;
 
-    if (Math.abs(offsetLeft) + timeslotDist >= maxLeftLimit)
-      setOffsetLeft(-maxLeftLimit)
-    else
-    setOffsetLeft(offsetLeft - timeslotDist)
+    console.log(Math.abs(offsetLeft - timeslotDist), Math.abs(appWidth - rowWidth))
+
+    if (Math.abs(offsetLeft - timeslotDist) >= Math.abs(appWidth - rowWidth))
+      setOffsetLeft(appWidth - rowWidth)
+    else if (maxLimit > appWidth)
+      setOffsetLeft(offsetLeft - timeslotDist)
   }
 
   const goUp = () => {
@@ -158,6 +163,7 @@ export default function EPGView() {
       <div className={styles.wrapper}>
         <div className={styles.header} style={{left: `${offsetLeft}px`}}>
           <DateRow id='date-row' currentTime={currentTime} />
+          <TimeIndicator id='time-indicator' currentTime={currentTime} />
         </div>
         <div className={styles.movable_wrapper} style={{top: `${offsetHeight}px`}}>
           <div className={styles.channel_row}>

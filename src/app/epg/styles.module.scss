@@ -5,7 +5,6 @@
     .header {
         width: 100%;
         height: $epg_row_height/2;
-        box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.4);
         position: absolute;
 
         z-index: 1;
@@ -21,7 +20,7 @@
         transition: all 250ms;
         
         .channel_row {
-            width: toRem(150);
+            width: toRem($channel_column_width);
             
             position: absolute;
             top: -$epg_row_height/2;

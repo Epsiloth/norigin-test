@@ -1,7 +1,8 @@
-$app_width: 1920px;
+$app_width: 1080px;
 $app_height: 720px;
 
 $epg_row_height: 100px;
+$channel_column_width: 150px;
 
 $primary_color: #1c1c1c;
 $secondary_color: #8c8c8c;
@@ -14,6 +15,7 @@ $button_size: 80px;
     app_width: $app_width;
     app_height: $app_height;
     epg_row_height: $epg_row_height;
+    channel_column_width: $channel_column_width;
     timeslot_distance: $timeslot_distance;
     button_size: $button_size;
 }
