@@ -6,15 +6,16 @@ import axios from 'axios';
 import EPGRow from '@/components/epg-row';
 import ChannelLogo from '@/components/channel-column';
 import styles from './styles.module.scss';
-import DateRow from '@/components/date-row';
+import TimeRow from '@/components/time-row';
 import { formatDate } from '@/helpers/helpers';
 import TimeIndicator from '@/components/time-indicator';
+import DayRow from '@/components/day-row';
 
 export default function EPGView() {
   // STATE & VARIABLE DECLARATIONS
   const router = useRouter();
   let routerUrl = '';
-  const defaultOffset = parseInt(styles.epg_row_height)/2;
+  const defaultOffset = parseInt(styles.epg_row_height);
   const [data, setData] = useState([]);
   const [rows, setRows] = useState([]);
   const [channels, setChannels] = useState([]);
@@ -44,8 +45,8 @@ export default function EPGView() {
     document.addEventListener('keyup', handleKeyPress); // LISTEN FOR USER INPUT
 
     const timeInterval = setInterval(() => {
-      setCurrentTime(new Date()) // UPDATE EPG TIME EVERY 5 MINUTES
-    }, 300000);
+      setCurrentTime(new Date()) // UPDATE EPG TIME EVERY 30 SECONDS
+    }, 30000);
 
     routerUrl = `/player?channel=${data[focus]?.id}`;
     return () => {
@@ -122,8 +123,8 @@ export default function EPGView() {
   const goRight = () => {
     const timeslotDist = parseInt(styles.timeslot_distance);
     const appWidth = parseInt(styles.app_width);
-    const maxLimit = document.getElementById('date-row').getBoundingClientRect().right - parseInt(styles.channel_column_width); // POSITION OF THE RIGHTMOST SIDE OF THE DATE ROW MINUS THE CHANNEL COLUMN WIDTH
-    const rowWidth = document.getElementById('date-row').getBoundingClientRect().width;
+    const maxLimit = document.getElementById('time-row').getBoundingClientRect().right - parseInt(styles.channel_column_width); // POSITION OF THE RIGHTMOST SIDE OF THE DATE ROW MINUS THE CHANNEL COLUMN WIDTH
+    const rowWidth = document.getElementById('time-row').getBoundingClientRect().width;
 
     console.log(Math.abs(offsetLeft - timeslotDist), Math.abs(appWidth - rowWidth))
 
@@ -176,13 +177,14 @@ export default function EPGView() {
 
   return (
       <div className={styles.wrapper}>
+        <DayRow id="day-row" currentTime={currentTime} />
         <div className={styles.header} style={{left: `${offsetLeft}px`}}>
-          <DateRow id='date-row' currentTime={currentTime} />
+          <TimeRow id='time-row' currentTime={currentTime} />
           <TimeIndicator id='time-indicator' currentTime={currentTime} />
         </div>
         <div className={styles.movable_wrapper} style={{top: `${offsetHeight}px`}}>
           <div className={styles.channel_row}>
-            <div className={styles.channel_header}>{formatDate(currentTime)}</div>
+            <div className={styles.channel_header} />
             {channels}
           </div>
           <div className={styles.row_wrapper} style={{left: `${offsetLeft}px`}}>

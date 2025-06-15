@@ -7,6 +7,9 @@
         height: $epg_row_height/2;
         position: absolute;
 
+        top: $epg_row_height/2;
+        left: 0;
+
         z-index: 1;
 
         transition: all 250ms;
@@ -15,25 +18,27 @@
     .movable_wrapper {
         position: relative;
 
-        top: $epg_row_height/2;
+        top: $epg_row_height;
 
         transition: all 250ms;
+
+        height: 100%;
         
         .channel_row {
             width: toRem($channel_column_width);
             
             position: absolute;
-            top: -$epg_row_height/2;
+            top: -$epg_row_height;
             left: 0;
             z-index: 1;
 
             box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.4);
 
             .channel_header {
-                height: $epg_row_height/2;
+                height: $epg_row_height;
                 background-color: $primary-color;
 
-                line-height: $epg_row_height/2;
+                line-height: $epg_row_height;
                 padding-left: .5rem;
             }
         }
@@ -41,6 +46,7 @@
         .row_wrapper {
             position: absolute;
 
+            z-index: 0;
             transition: all 250ms;
         }
     }

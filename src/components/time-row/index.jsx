@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { formatToHour } from '@/helpers/helpers';
 
-export default function DateRow ({ id }) {
-    const startingOffset = parseInt(styles.channel_column_width); // CHANNEL COLUMN WIDTH
+export default function TimeRow ({ id }) {
     const [timeslots, setTimeslots] = useState([]);
 
     useEffect(() => {
@@ -20,7 +19,7 @@ export default function DateRow ({ id }) {
     }
     
     return(
-        <div id={id} className={styles.date_row} style={{marginLeft: `${startingOffset}px`}}>
+        <div id={id} className={styles.time_row}>
             {timeslots}
         </div>
     )

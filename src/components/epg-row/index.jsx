@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import styles from './styles.module.scss';
-import { formatToHourFromDate } from "@/helpers/helpers";
+import { checkTimeframe, formatToHourFromDate } from "@/helpers/helpers";
 
 export default function EPGRow ({ id, dataProps, currentTime }) {
     const startingOffset = parseInt(styles.channel_column_width); // CHANNEL COLUMN WIDTH
@@ -17,7 +17,9 @@ export default function EPGRow ({ id, dataProps, currentTime }) {
         for (let i = 0; i < data?.schedules.length; i++) {
             const startDate = new Date(data?.schedules[i].start);
             const endDate = new Date(data?.schedules[i].end);
-            const isCurrent = currentTime.getTime() < endDate.getTime() && currentTime.getTime() > startDate.getTime() ? true : false;
+            
+            const isCurrent = checkTimeframe(startDate, endDate, currentTime);
+
 
             const scheduleWidth = ((Math.abs(endDate - startDate) / (1000 * 60))  * parseInt(styles.timeslot_distance)) / 60;
 

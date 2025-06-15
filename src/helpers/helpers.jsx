@@ -1,37 +1,44 @@
-export const formatToHour = (n) => {
+export const formatDigit = (n) => {
     if (n < 10) {
-        return `0${n}:00`;
+        return `0${n}`;
     }
-    return `${n}:00`;
+    return n;
+}
+
+export const formatToHour = (n) => {
+    return `${formatDigit(n)}:00`
 }
 
 export const formatToHourFromDate = (date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
 
-    if (hours < 10) {
-        return `0${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
-    }
-    return `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+    return `${formatDigit(hours)}:${formatDigit(minutes)}`;
 }
 
 export const formatDate = (date) => {
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-    const dayLastDigit = date.getDate() % 10;
+    return `${days[date.getDay()]}, ${formatDigit(date.getDate())}.${formatDigit(date.getMonth() + 1)}`;
+}
 
-    let acc = 'th';
-    switch (dayLastDigit) {
-        case 1:
-            acc = 'st';
-            break;
-        case 2:
-            acc = 'nd';
-            break;
-        case 3:
-            acc = 'rd';
-    }
+export const checkTimeframe = (startTime, endTime, checkTime) => {  // DISREGARD DATE AND ONLY CHECK HOURS/MINNUTES FOR SCHEDULE (PROTOTYPING ONLY)
+    const startHour = startTime.getHours();
+    const startMinutes = startTime.getMinutes();
+    const endHour = endTime.getHours();
+    const endMinutes = endTime.getMinutes();
+    const checkHour = checkTime.getHours();
+    const checkMinutes = checkTime.getMinutes();
 
-    return `${days[date.getDay()]}, ${date.getDate()}${acc} ${months[date.getMonth()]}`;
+    if (checkHour >= startHour && checkHour <= endHour)
+        if (checkHour === startHour && checkMinutes > startMinutes)
+            return true;
+        else if (checkHour === endHour && checkMinutes < endMinutes)
+            return true;
+        else if (checkHour === startHour || checkHour === endHour)
+            return false;
+        else
+            return true;
+
+    return false;
 }

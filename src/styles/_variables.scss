@@ -8,6 +8,7 @@ $primary_color: #141414;
 $secondary_color: #1c1c1c;
 
 $timeslot_distance: 500px;
+$dayslot_distance: 200px;
 
 $button_size: 80px;
 
@@ -17,5 +18,6 @@ $button_size: 80px;
     epg_row_height: $epg_row_height;
     channel_column_width: $channel_column_width;
     timeslot_distance: $timeslot_distance;
+    dayslot_distance: $dayslot_distance;
     button_size: $button_size;
 }
